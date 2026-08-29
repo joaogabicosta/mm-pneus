@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f1319;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 122, 0, 0.08), transparent),
+    linear-gradient(180deg, #0f1319 0%, #10151c 40%, #161c24 100%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background-color: rgba(255, 122, 0, 0.3);
+  color: #f8fafc;
+}
