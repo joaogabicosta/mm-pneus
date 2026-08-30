@@ -94,7 +94,7 @@ function InstagramIcon({ className, gradientId }: { className?: string; gradient
 
 const SERVICOS = [
   { icon: TireIcon, titulo: "Pneus Novos", desc: "As melhores marcas e medidas ideais para carros de passeio, SUVs e utilitários, garantindo máxima aderência e durabilidade." },
-  { icon: WheelIcon, titulo: "Rodas e Personalização", desc: "Modelos esportivos e originais, além de serviços especializados de reforma, restauração e pintura de rodas." },
+  { icon: WheelIcon, titulo: "Rodas e Personalizações", desc: "Modelos esportivos e originais, além de serviços especializados de reforma, restauração e pintura de rodas." },
   { icon: Scale, titulo: "Geometria e Balanceamento 3D", desc: "Tecnologia a laser de alta precisão para estabilidade total ao dirigir e menor desgaste dos pneus." },
   { icon: Droplet, titulo: "Troca de Óleo e Filtros", desc: "Manutenção preventiva com lubrificantes e filtros homologados pelas principais montadoras." },
   { icon: Wrench, titulo: "Suspensão e Freios", desc: "Revisão completa e diagnóstico avançado para assegurar frenagens seguras e conforto ao rodar." },
