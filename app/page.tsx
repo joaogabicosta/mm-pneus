@@ -4,11 +4,9 @@ import {
   MapPin,
   Instagram,
   Phone,
-  CircleDot,
   Gauge,
   Wrench,
   Droplet,
-  Disc3,
   Clock,
   Zap,
   ScanLine,
@@ -32,9 +30,47 @@ const MAPS_ROUTE_LINK =
 const INSTAGRAM_LINK = "https://instagram.com/mm_pneus";
 const TEL_LINK = `tel:+${WHATSAPP_NUMBER}`;
 
+function TireIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="9" strokeDasharray="2.5 2.5" />
+      <circle cx="12" cy="12" r="4" />
+    </svg>
+  );
+}
+
+function WheelIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="3" />
+      <line x1="14.12" y1="14.12" x2="18.36" y2="18.36" />
+      <line x1="9.88" y1="14.12" x2="5.64" y2="18.36" />
+      <line x1="9.88" y1="9.88" x2="5.64" y2="5.64" />
+      <line x1="14.12" y1="9.88" x2="18.36" y2="5.64" />
+    </svg>
+  );
+}
+
 const SERVICOS = [
-  { icon: CircleDot, titulo: "Pneus Novos", desc: "As melhores marcas e medidas ideais para carros de passeio, SUVs e utilitários, garantindo máxima aderência e durabilidade." },
-  { icon: Disc3, titulo: "Rodas e Personalização", desc: "Modelos esportivos e originais, além de serviços especializados de reforma, restauração e pintura de rodas." },
+  { icon: TireIcon, titulo: "Pneus Novos", desc: "As melhores marcas e medidas ideais para carros de passeio, SUVs e utilitários, garantindo máxima aderência e durabilidade." },
+  { icon: WheelIcon, titulo: "Rodas e Personalização", desc: "Modelos esportivos e originais, além de serviços especializados de reforma, restauração e pintura de rodas." },
   { icon: Gauge, titulo: "Geometria e Balanceamento 3D", desc: "Tecnologia a laser de alta precisão para estabilidade total ao dirigir e menor desgaste dos pneus." },
   { icon: Droplet, titulo: "Troca de Óleo e Filtros", desc: "Manutenção preventiva com lubrificantes e filtros homologados pelas principais montadoras." },
   { icon: Wrench, titulo: "Suspensão e Freios", desc: "Revisão completa e diagnóstico avançado para assegurar frenagens seguras e conforto ao rodar." },
