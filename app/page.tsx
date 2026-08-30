@@ -51,19 +51,17 @@ function WheelIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fill="currentColor"
       className={className}
     >
-      <circle cx="12" cy="12" r="9" />
-      <circle cx="12" cy="12" r="3" />
-      <line x1="14.12" y1="14.12" x2="18.36" y2="18.36" />
-      <line x1="9.88" y1="14.12" x2="5.64" y2="18.36" />
-      <line x1="9.88" y1="9.88" x2="5.64" y2="5.64" />
-      <line x1="14.12" y1="9.88" x2="18.36" y2="5.64" />
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="2.2" />
+      <rect x="10.9" y="3.6" width="2.2" height="5.2" rx="1.1" />
+      <rect x="10.9" y="3.6" width="2.2" height="5.2" rx="1.1" transform="rotate(60 12 12)" />
+      <rect x="10.9" y="3.6" width="2.2" height="5.2" rx="1.1" transform="rotate(120 12 12)" />
+      <rect x="10.9" y="3.6" width="2.2" height="5.2" rx="1.1" transform="rotate(180 12 12)" />
+      <rect x="10.9" y="3.6" width="2.2" height="5.2" rx="1.1" transform="rotate(240 12 12)" />
+      <rect x="10.9" y="3.6" width="2.2" height="5.2" rx="1.1" transform="rotate(300 12 12)" />
     </svg>
   );
 }
