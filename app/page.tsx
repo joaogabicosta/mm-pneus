@@ -36,12 +36,12 @@ function TireIcon({ className }: { className?: string }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.25}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
     >
-      <circle cx="12" cy="12" r="9" strokeDasharray="2.5 2.5" />
+      <path d="M9.93 4.27L10.71 2.79L13.29 2.79L14.07 4.27A8 8 0 0 1 16 5.07L17.6 4.57L19.43 6.4L18.93 8A8 8 0 0 1 19.73 9.93L21.21 10.71L21.21 13.29L19.73 14.07A8 8 0 0 1 18.93 16L19.43 17.6L17.6 19.43L16 18.93A8 8 0 0 1 14.07 19.73L13.29 21.21L10.71 21.21L9.93 19.73A8 8 0 0 1 8 18.93L6.4 19.43L4.57 17.6L5.07 16A8 8 0 0 1 4.27 14.07L2.79 13.29L2.79 10.71L4.27 9.93A8 8 0 0 1 5.07 8L4.57 6.4L6.4 4.57L8 5.07A8 8 0 0 1 9.93 4.27Z" />
       <circle cx="12" cy="12" r="4" />
     </svg>
   );
