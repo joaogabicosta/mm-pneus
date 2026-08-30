@@ -144,7 +144,7 @@ export default function Home() {
               className="flex items-center gap-1.5 rounded-full bg-[#25D366] px-3.5 py-2 text-xs font-bold uppercase tracking-wide text-[#0f1319] shadow-[0_0_18px_rgba(37,211,102,0.35)] transition hover:brightness-110 active:scale-[0.97]"
             >
               <WhatsAppIcon className="h-3.5 w-3.5" />
-              Orçamento no WhatsApp
+              Faça seu Orçamento
             </a>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Home() {
                 className="group flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-base font-bold uppercase tracking-wide text-[#0f1319] shadow-[0_0_24px_rgba(37,211,102,0.35)] transition hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.5)] active:scale-[0.98]"
               >
                 <WhatsAppIcon className="h-5 w-5" />
-                Falar no WhatsApp / Orçamento rápido
+                WhatsApp
               </a>
 
               <a
