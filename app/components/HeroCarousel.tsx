@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 const SLIDES = [
-  { src: "/hero/slide-1.jpg", alt: "Rodas e pneus montados em carro esportivo" },
-  { src: "/hero/slide-2.jpg", alt: "Geometria e alinhamento 3D" },
-  { src: "/hero/slide-3.jpg", alt: "Showroom de rodas com iluminação LED" },
+  { src: "/hero/slide1.png", alt: "Rodas e pneus montados em carro esportivo" },
+  { src: "/hero/slide2.png", alt: "Geometria e alinhamento 3D" },
+  { src: "/hero/slide3.png", alt: "Showroom de rodas com iluminação LED" },
 ];
 
 export default function HeroCarousel() {
