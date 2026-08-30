@@ -180,7 +180,10 @@ export default function Home() {
               </span>
               <br />
               <span className="bg-gradient-to-b from-[#f1f5f9] to-[#94a3b8] bg-clip-text text-transparent">
-                Serviço de qualidade que seu carro EXIGE.
+                Serviço de qualidade que seu carro{" "}
+              </span>
+              <span className="bg-gradient-to-r from-[#ffb37a] via-[#ff7a00] to-[#ff5500] bg-clip-text text-transparent">
+                EXIGE.
               </span>
             </h1>
 
@@ -188,12 +191,12 @@ export default function Home() {
               Fale direto com a gente pelo WhatsApp e receba seu orçamento rápido, sem precisar sair de casa.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-base font-bold uppercase tracking-wide text-[#0f1319] shadow-[0_0_24px_rgba(37,211,102,0.35)] transition hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.5)] active:scale-[0.98]"
+                className="group flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-base font-bold uppercase tracking-wide text-[#0f1319] shadow-[0_0_24px_rgba(37,211,102,0.35)] transition hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.5)] active:scale-[0.98] sm:col-span-3"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 WhatsApp
