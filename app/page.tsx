@@ -172,20 +172,20 @@ export default function Home() {
 
             <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               <span className="bg-gradient-to-b from-[#f1f5f9] to-[#94a3b8] bg-clip-text text-transparent">
-                Seu carro pede
+                Centro automotivo completo em
               </span>
               <br />
               <span className="bg-gradient-to-r from-[#ffb37a] via-[#ff7a00] to-[#ff5500] bg-clip-text text-transparent">
-                pneu novo, alinhamento
+                Tubarão.
               </span>
               <br />
               <span className="bg-gradient-to-b from-[#f1f5f9] to-[#94a3b8] bg-clip-text text-transparent">
-                ou revisão?
+                Serviço de qualidade que seu carro EXIGE.
               </span>
             </h1>
 
             <p className="mt-5 max-w-md text-base text-[#94a3b8]">
-              Fala direto com a gente pelo WhatsApp e recebe orçamento rápido, sem precisar sair de casa.
+              Fale direto com a gente pelo WhatsApp e receba seu orçamento rápido, sem precisar sair de casa.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -273,11 +273,11 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-5 py-16 text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
             <span className="bg-gradient-to-r from-[#ffb37a] via-[#ff7a00] to-[#ff5500] bg-clip-text text-transparent">
-              Bora resolver o pneu?
+              Vamos cuidar do seu veículo ainda hoje?
             </span>
           </h2>
           <p className="mx-auto mt-3 max-w-sm text-sm text-[#94a3b8]">
-            Manda a placa, a medida do pneu ou o serviço que precisa. A gente responde rapidinho.
+            Nos chame no Whatsapp. Temos a melhor equipe aguardando o seu contato.
           </p>
           <a
             href={WHATSAPP_LINK}
