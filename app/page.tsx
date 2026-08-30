@@ -13,6 +13,7 @@ import {
   Zap,
   ScanLine,
   BadgeCheck,
+Crown,
   ArrowRight,
 } from "lucide-react";
 import HeroCarousel from "./components/HeroCarousel";
@@ -32,11 +33,12 @@ const INSTAGRAM_LINK = "https://instagram.com/mm_pneus";
 const TEL_LINK = `tel:+${WHATSAPP_NUMBER}`;
 
 const SERVICOS = [
-  { icon: CircleDot, titulo: "Pneus Novos", desc: "Linhas para carro, SUV e utilitário, com medida certa pro seu veículo." },
-  { icon: Disc3, titulo: "Rodas e Reformas", desc: "Rodas esportivas, originais e serviço de recuperação." },
-  { icon: Gauge, titulo: "Geometria e Balanceamento 3D", desc: "Alinhamento de precisão para rodar reto e economizar pneu." },
-  { icon: Droplet, titulo: "Troca de Óleo e Filtros", desc: "Manutenção preventiva rápida, do jeito que o motor pede." },
-  { icon: Wrench, titulo: "Suspensão e Freios", desc: "Diagnóstico e reparo pra você parar e curvar com segurança." },
+  { icon: CircleDot, titulo: "Pneus Novos", desc: "As melhores marcas e medidas ideais para carros de passeio, SUVs e utilitários, garantindo máxima aderência e durabilidade." },
+  { icon: Disc3, titulo: "Rodas e Personalização", desc: "Modelos esportivos e originais, além de serviços especializados de reforma, restauração e pintura de rodas." },
+  { icon: Gauge, titulo: "Geometria e Balanceamento 3D", desc: "Tecnologia a laser de alta precisão para estabilidade total ao dirigir e menor desgaste dos pneus." },
+  { icon: Droplet, titulo: "Troca de Óleo e Filtros", desc: "Manutenção preventiva com lubrificantes e filtros homologados pelas principais montadoras." },
+  { icon: Wrench, titulo: "Suspensão e Freios", desc: "Revisão completa e diagnóstico avançado para assegurar frenagens seguras e conforto ao rodar." },
+  { icon: Crown, titulo: "Linha Premium Sob Encomenda", desc: "Atendimento exclusivo para veículos importados e de alta performance, com encomenda de pneus e rodas de especificações especiais." },
 ];
 
 const BADGES = [
