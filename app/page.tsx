@@ -172,9 +172,8 @@ export default function Home() {
 
             <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:max-w-none lg:text-[2.9rem] xl:text-[3.4rem]">
               <span className="bg-gradient-to-b from-[#f1f5f9] to-[#94a3b8] bg-clip-text text-transparent">
-                Centro automotivo completo em
+                Centro automotivo completo em{" "}
               </span>
-              <br />
               <span className="bg-gradient-to-r from-[#ffb37a] via-[#ff7a00] to-[#ff5500] bg-clip-text text-transparent">
                 Tubarão.
               </span>
