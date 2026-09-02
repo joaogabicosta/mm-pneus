@@ -49,10 +49,10 @@ export default function HeroCarousel() {
   };
 
   return (
-    // Mobile: card 16/10 dentro da coluna do grid (igual ao que já era).
+    // Mobile: faixa full-bleed (sangra o px-5 do container), altura por aspect-ratio.
     // Desktop (lg+): sai do fluxo e vira o fundo full-bleed da <section> do hero.
     <div
-      className="relative aspect-[16/10] touch-pan-y select-none overflow-hidden rounded-3xl border border-[#ff7a00]/20 shadow-2xl shadow-[#ff7a00]/10 lg:absolute lg:inset-0 lg:z-0 lg:aspect-auto lg:h-full lg:w-full lg:rounded-none lg:border-0 lg:shadow-none"
+      className="relative -mx-5 my-8 aspect-[16/10] touch-pan-y select-none overflow-hidden border-y border-[#ff7a00]/20 lg:absolute lg:inset-0 lg:-z-10 lg:mx-0 lg:my-0 lg:aspect-auto lg:h-full lg:w-full lg:border-0"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
