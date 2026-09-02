@@ -20,34 +20,37 @@ body {
 }
 
 /* ---------------------------------------------------------------
-   Hero carousel — Ken Burns (base: Animista "kenburns-top")
-   O slide ativo roda a animação; os inativos ficam parados no
-   estado final dela, para não haver "pulo" durante o crossfade.
+   Hero carousel
+   - .hero-tile: cada bloco do mosaico do dissolve de pixels.
+     A duração e o delay de cada bloco vêm inline do componente.
+   - .hero-drift: movimento lento de fundo, baseado no "kenburns-top"
+     do Animista, aplicado ao wrapper (não a cada imagem) para que os
+     dois planos fiquem sempre alinhados durante a transição.
 --------------------------------------------------------------- */
-@keyframes hero-kenburns {
-  0% {
+.hero-tile {
+  transition-property: opacity;
+  transition-timing-function: linear;
+}
+
+@keyframes hero-drift {
+  from {
     transform: scale(1) translateY(0);
-    transform-origin: 50% 16%;
   }
-  100% {
-    transform: scale(1.12) translateY(-14px);
-    transform-origin: top;
+  to {
+    transform: scale(1.1) translateY(-1.5%);
   }
 }
 
-.hero-kenburns-active {
-  animation: hero-kenburns 6s ease-out both;
-  will-change: transform;
-}
-
-.hero-kenburns-idle {
-  transform: scale(1.12) translateY(-14px);
-  transform-origin: top;
+.hero-drift {
+  transform-origin: 50% 30%;
+  animation: hero-drift 20s ease-in-out infinite alternate;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-kenburns-active,
-  .hero-kenburns-idle {
+  .hero-tile {
+    transition-delay: 0ms !important;
+  }
+  .hero-drift {
     animation: none;
     transform: none;
   }
