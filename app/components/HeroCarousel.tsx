@@ -171,7 +171,7 @@ export default function HeroCarousel() {
         className="pointer-events-none absolute inset-0 hidden lg:block"
         style={{
           background:
-            "linear-gradient(90deg, #0f1319 0%, #0f1319 40%, rgba(15,19,25,0.92) 52%, rgba(15,19,25,0.60) 66%, rgba(15,19,25,0.22) 82%, rgba(15,19,25,0) 100%)",
+            "linear-gradient(90deg, #0f1319 0%, #0f1319 44%, rgba(15,19,25,0.90) 57%, rgba(15,19,25,0.55) 71%, rgba(15,19,25,0.18) 86%, rgba(15,19,25,0) 100%)",
         }}
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-24 bg-gradient-to-b from-[#0f1319]/85 to-transparent lg:block" />
