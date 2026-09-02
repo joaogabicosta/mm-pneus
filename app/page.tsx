@@ -150,14 +150,14 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden lg:min-h-[calc(100vh-81px)]">
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/3 rounded-full opacity-40 blur-3xl"
           style={{ background: "radial-gradient(circle, rgba(255,122,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
         />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-14 sm:pt-20 lg:grid-cols-2">
-          <div>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-14 sm:pt-20 lg:static lg:min-h-[calc(100vh-81px)] lg:grid-cols-2 lg:py-24">
+          <div className="relative z-10">
             <div className="mb-6 flex flex-wrap gap-2">
               {BADGES.map(({ icon: Icon, label }) => (
                 <span
