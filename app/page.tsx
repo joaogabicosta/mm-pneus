@@ -156,8 +156,8 @@ export default function Home() {
           style={{ background: "radial-gradient(circle, rgba(255,122,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
         />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-14 sm:pt-20 lg:static lg:min-h-[calc(100vh-81px)] lg:grid-cols-2 lg:py-24">
-          <div className="relative z-10">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-8 pt-14 sm:pt-20 lg:pb-16 lg:static lg:min-h-[calc(100vh-81px)] lg:grid-cols-2 lg:py-24">
+          <div className="relative z-10 lg:static">
             <div className="mb-6 flex flex-wrap gap-2">
               {BADGES.map(({ icon: Icon, label }) => (
                 <span
@@ -190,6 +190,8 @@ export default function Home() {
             <p className="mt-5 max-w-md text-base text-[#94a3b8]">
               Fale direto com a gente pelo WhatsApp e receba seu orçamento rápido, sem precisar sair de casa.
             </p>
+
+            <HeroCarousel />
 
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <a
@@ -231,8 +233,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-
-          <HeroCarousel />
         </div>
       </section>
 
