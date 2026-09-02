@@ -124,7 +124,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-[#e2e8f0] antialiased">
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1319]/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 lg:max-w-none lg:px-12">
           <Logo className="h-9 md:h-12 lg:h-14" />
 
           <div className="flex items-center gap-2">
@@ -156,8 +156,8 @@ export default function Home() {
           style={{ background: "radial-gradient(circle, rgba(255,122,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
         />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-8 pt-14 sm:pt-20 lg:pb-16 lg:static lg:min-h-[calc(100vh-81px)] lg:grid-cols-2 lg:py-24">
-          <div className="relative z-10 lg:static">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-8 pt-14 sm:pt-20 lg:static lg:max-w-none lg:min-h-[calc(100vh-81px)] lg:px-12 lg:py-8">
+          <div className="relative z-10 lg:static lg:max-w-[46rem]">
             <div className="mb-6 flex flex-wrap gap-2">
               {BADGES.map(({ icon: Icon, label }) => (
                 <span
@@ -170,7 +170,7 @@ export default function Home() {
               ))}
             </div>
 
-            <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+            <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:max-w-none lg:text-[2.9rem] xl:text-[3.4rem]">
               <span className="bg-gradient-to-b from-[#f1f5f9] to-[#94a3b8] bg-clip-text text-transparent">
                 Centro automotivo completo em
               </span>
@@ -187,7 +187,7 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="mt-5 max-w-md text-base text-[#94a3b8]">
+            <p className="mt-5 max-w-md text-base text-[#94a3b8] lg:max-w-xl">
               Fale direto com a gente pelo WhatsApp e receba seu orçamento rápido, sem precisar sair de casa.
             </p>
 
