@@ -249,7 +249,7 @@ export default function Home() {
         id="servicos"
         data-panel
         data-gallery
-        className="relative overflow-hidden py-16 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
+        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden py-16 lg:h-screen lg:min-h-0 lg:py-0"
       >
         <div className="mx-auto w-full max-w-6xl px-5 lg:max-w-none lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que fazemos</p>
@@ -257,7 +257,7 @@ export default function Home() {
           <p className="mt-2 text-sm text-[#64748b] lg:hidden">Arraste para o lado para ver todos</p>
         </div>
 
-        <div className="mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
+        <div className="trilha-mobile mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
           <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
             {SERVICOS.map(({ icon: Icon, titulo, desc }) => (
               <a
@@ -265,6 +265,7 @@ export default function Home() {
                 href={whatsappFor(titulo)}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-card
                 className="group relative flex w-[290px] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#1e2633] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#ff7a00]/50 hover:shadow-[0_10px_40px_rgba(255,122,0,0.15)] sm:w-[340px]"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff7a00]/10 ring-1 ring-[#ff7a00]/20 transition group-hover:bg-[#ff7a00]/15 group-hover:ring-[#ff7a00]/40">
@@ -288,7 +289,7 @@ export default function Home() {
         id="avaliacoes"
         data-panel
         data-gallery
-        className="relative overflow-hidden border-t border-white/10 py-16 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
+        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden border-t border-white/10 py-16 lg:h-screen lg:min-h-0 lg:py-0"
       >
         <div className="mx-auto w-full max-w-6xl px-5 lg:max-w-none lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que dizem</p>
@@ -313,11 +314,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
+        <div className="trilha-mobile mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
           <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
             {AVALIACOES.map((a) => (
               <figure
                 key={a.nome + a.quando}
+                data-card
                 className="flex w-[290px] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#1e2633] p-6 sm:w-[360px]"
               >
                 <div className="flex gap-0.5" aria-label={`${a.nota} de 5 estrelas`}>
@@ -347,8 +349,8 @@ export default function Home() {
         </div>
       </section>
 
-      <div data-panel className="lg:flex lg:h-screen lg:flex-col">
-      <section className="relative overflow-hidden border-y border-white/10 lg:flex lg:flex-1 lg:items-center">
+      <div data-panel className="flex min-h-[100svh] flex-col lg:h-screen lg:min-h-0">
+      <section className="relative flex flex-1 items-center overflow-hidden border-y border-white/10">
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(135deg, #161c24 0%, #1e2633 45%, #201812 100%)" }}
@@ -379,7 +381,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="relative overflow-hidden bg-[#0b0e13] lg:shrink-0">
+      <footer className="relative shrink-0 overflow-hidden bg-[#0b0e13]">
         <Image
           src="/logo.png"
           alt=""

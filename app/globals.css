@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* scroll-behavior: smooth global briga com scroll-snap (trava em alguns
+   itens no Firefox), então fica só no desktop, onde o snap é do GSAP. */
+@media (min-width: 1024px) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -20,18 +24,41 @@ body {
 }
 
 /* ---------------------------------------------------------------
-   Hero carousel
-   - .hero-tile: cada bloco do mosaico do dissolve de pixels.
-     A duração e o delay de cada bloco vêm inline do componente.
-   - .hero-drift: movimento lento de fundo, baseado no "kenburns-top"
-     do Animista, aplicado ao wrapper (não a cada imagem) para que os
-     dois planos fiquem sempre alinhados durante a transição.
+   Hero carousel — varredura da esquerda para a direita
+   A foto que entra (.hero-sweep) e a camada que escurece a que sai
+   (.hero-dim) usam a mesma mecânica: uma máscara de gradiente 3x mais
+   larga que o elemento, movida por mask-position de 100% até 0%.
+   O degradê da máscara tem cerca de 45% da largura da tela: largo o
+   bastante para não existir uma linha visível, estreito o bastante para
+   a troca acontecer varrendo, e não como um crossfade da imagem inteira.
+   Como a máscara já está rasterizada, mover a posição é bem mais barato
+   do que regerar o gradiente a cada frame.
+   A .hero-dim tem os stops adiantados, então a faixa escura caminha na
+   frente e a foto que sai escurece um pouco antes da nova chegar.
 --------------------------------------------------------------- */
-.hero-tile {
-  transition-property: opacity;
-  transition-timing-function: linear;
+.hero-sweep,
+.hero-dim {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 300% 100%;
+  mask-size: 300% 100%;
+  -webkit-mask-position: 0% 0;
+  mask-position: 0% 0;
 }
 
+.hero-sweep {
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 36%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 36%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0) 100%);
+}
+
+.hero-dim {
+  background-color: #05070a;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 48%, rgba(0, 0, 0, 0) 63%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 48%, rgba(0, 0, 0, 0) 63%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Movimento lento de fundo, baseado no "kenburns-top" do Animista, aplicado
+   ao wrapper (não a cada imagem) para os planos ficarem sempre alinhados. */
 @keyframes hero-drift {
   from {
     transform: scale(1) translateY(0);
@@ -46,12 +73,49 @@ body {
   animation: hero-drift 20s ease-in-out infinite alternate;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-tile {
-    transition-delay: 0ms !important;
+/* ---------------------------------------------------------------
+   Scroll por painéis
+   Mobile: snap nativo do CSS. Roda no compositor, respeita o impulso do
+   dedo e não briga com a barra de endereço — diferente de qualquer snap
+   feito por JS, que no iOS luta contra o momentum.
+   Usa "proximity", não "mandatory": a capa no celular é mais alta que a
+   tela, e com mandatory o visitante ficaria preso sem conseguir ler o meio
+   dela. Desktop: o snap é do GSAP, no ScrollFX.
+--------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  html {
+    scroll-snap-type: y proximity;
   }
+
+  [data-panel] {
+    scroll-snap-align: start;
+  }
+}
+
+/* Trilhas horizontais no celular: scroller próprio, com snap por card.
+   overscroll-behavior-x: contain impede o gesto horizontal de vazar para
+   o scroll vertical da página. */
+.trilha-mobile {
+  overscroll-behavior-x: contain;
+}
+
+@media (max-width: 1023px) {
+  .trilha-mobile {
+    scroll-snap-type: x mandatory;
+  }
+
+  .trilha-mobile [data-card] {
+    scroll-snap-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .hero-drift {
     animation: none;
     transform: none;
+  }
+
+  html {
+    scroll-snap-type: none;
   }
 }
