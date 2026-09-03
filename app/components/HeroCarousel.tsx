@@ -178,8 +178,43 @@ export default function HeroCarousel() {
       <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-24 bg-gradient-to-b from-[#0f1319]/85 to-transparent desk:block" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-[#0f1319] via-[#0f1319]/55 to-transparent desk:block" />
 
-      {/* Indicadores de paginação */}
-      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 desk:bottom-10 desk:left-auto desk:right-10 desk:translate-x-0">
+      {/* Indicadores de paginação
+          Tela em pé (celular): miniaturas das próprias fotos. Além de dizer
+          em que ponto do rodízio o visitante está, elas mostram de cara que
+          existem outras fotos e o que vem nelas — o ponto sozinho não conta
+          isso. Ficam encostadas no canto inferior direito, longe da legenda
+          (que ocupa a metade esquerda) e já dentro do degradê escuro do pé
+          da foto, então não roubam área da imagem.
+          Computador e celular deitado seguem com a barrinha de pontos: ali a
+          foto é o fundo da tela inteira e as miniaturas competiriam com o
+          título. */}
+      <div className="absolute bottom-3 right-3 z-20 flex gap-1.5 desk:hidden">
+        {SLIDES.map((slide, i) => (
+          <button
+            key={slide.src}
+            type="button"
+            aria-label={`Ver foto ${i + 1}`}
+            aria-current={i === active}
+            onClick={() => goTo(i)}
+            className={`h-8 w-14 overflow-hidden rounded-md border transition-all duration-500 ${
+              i === active
+                ? "border-[#ff7a00] opacity-100 shadow-[0_0_10px_rgba(255,122,0,0.45)]"
+                : "border-white/25 opacity-50"
+            }`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={slide.src}
+              alt=""
+              aria-hidden
+              draggable={false}
+              className="h-full w-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+
+      <div className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 gap-2 desk:flex desk:bottom-10 desk:left-auto desk:right-10 desk:translate-x-0">
         {SLIDES.map((slide, i) => (
           <button
             key={slide.src}
