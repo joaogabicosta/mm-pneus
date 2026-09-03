@@ -6,9 +6,6 @@ import {
   Wrench,
   Droplet,
   Clock,
-  Zap,
-  Award,
-  BadgeCheck,
   Crown,
   ArrowRight,
   Star,
@@ -16,6 +13,7 @@ import {
 import HeroCarousel from "./components/HeroCarousel";
 import ScrollFX from "./components/ScrollFX";
 import { getAvaliacoes } from "./lib/googleReviews";
+import { BADGES } from "./badges";
 
 const WHATSAPP_NUMBER = "5547933005070";
 const WHATSAPP_MSG = encodeURIComponent("Olá, gostaria de um orçamento");
@@ -104,13 +102,7 @@ const SERVICOS = [
   { icon: Crown, titulo: "Linha Premium Sob Encomenda", desc: "Atendimento exclusivo para veículos importados e de alta performance, com encomenda de pneus e rodas de especificações especiais." },
 ];
 
-const BADGES = [
-  { icon: Zap, label: "Atendimento Rápido" },
-  { icon: Award, label: "Serviço Especializado" },
-  { icon: BadgeCheck, label: "Orçamento sem compromisso" },
-];
-
-function Logo({ className = "h-9 md:h-12 lg:h-14" }: { className?: string }) {
+function Logo({ className = "h-9 md:h-12 desk:h-14" }: { className?: string }) {
   return (
     <Image
       src="/logo.png"
@@ -135,8 +127,8 @@ export default async function Home() {
       <ScrollFX />
 
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1319]/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 lg:max-w-none lg:px-12">
-          <Logo className="h-9 md:h-12 lg:h-14" />
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 curto:py-1.5 desk:max-w-none desk:px-12">
+          <Logo className="h-9 curto:h-8 md:h-12 desk:h-14" />
 
           <div className="flex items-center gap-2">
             <a
@@ -161,15 +153,15 @@ export default async function Home() {
         </div>
       </header>
 
-      <section id="capa" data-panel className="relative overflow-hidden lg:min-h-[calc(100vh-81px)]">
+      <section id="capa" data-panel className="relative overflow-hidden desk:min-h-[calc(100svh-81px)] curto:desk:min-h-[calc(100svh-46px)]">
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/3 rounded-full opacity-40 blur-3xl"
           style={{ background: "radial-gradient(circle, rgba(255,122,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
         />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-8 pt-14 sm:pt-20 lg:static lg:max-w-none lg:min-h-[calc(100vh-81px)] lg:px-12 lg:py-8">
-          <div className="relative z-10 lg:static lg:max-w-[46rem]">
-            <div className="mb-6 flex flex-wrap gap-2">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-6 pt-6 sm:pt-16 desk:static desk:max-w-none desk:min-h-[calc(100svh-81px)] desk:px-12 desk:py-8 curto:desk:min-h-[calc(100svh-46px)] curto:desk:py-3">
+          <div className="relative z-10 desk:static desk:max-w-[46rem]">
+            <div className="mb-6 hidden flex-wrap gap-2 desk:flex curto:mb-3">
               {BADGES.map(({ icon: Icon, label }) => (
                 <span
                   key={label}
@@ -181,7 +173,7 @@ export default async function Home() {
               ))}
             </div>
 
-            <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:max-w-none lg:text-[2.9rem] xl:text-[3.4rem]">
+            <h1 className="max-w-2xl font-display text-[1.7rem] font-bold leading-[1.08] tracking-tight sm:text-5xl desk:max-w-none desk:text-[2.9rem] curto:text-[1.55rem] curto:leading-[1.12] xl:text-[3.4rem]">
               <span className="bg-gradient-to-b from-[#f1f5f9] to-[#94a3b8] bg-clip-text text-transparent">
                 Centro automotivo completo em{" "}
               </span>
@@ -197,18 +189,18 @@ export default async function Home() {
               </span>
             </h1>
 
-            <p className="mt-5 max-w-md text-base text-[#94a3b8] lg:max-w-xl">
+            <p className="mt-3 max-w-md text-sm text-[#94a3b8] sm:text-base desk:mt-5 desk:max-w-xl curto:mt-2 curto:text-[13px]">
               Fale direto com a gente pelo WhatsApp e receba seu orçamento rápido, sem precisar sair de casa.
             </p>
 
             <HeroCarousel />
 
-            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3 desk:mt-8 curto:mt-3">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-base font-bold uppercase tracking-wide text-[#0f1319] shadow-[0_0_24px_rgba(37,211,102,0.35)] transition hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.5)] active:scale-[0.98] sm:col-span-3"
+                className="group col-span-3 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-base font-bold uppercase tracking-wide text-[#0f1319] curto:py-2.5 shadow-[0_0_24px_rgba(37,211,102,0.35)] transition hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.5)] active:scale-[0.98]"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 WhatsApp
@@ -218,7 +210,7 @@ export default async function Home() {
                 href={MAPS_ROUTE_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#1e2633] px-5 py-3.5 text-sm font-semibold uppercase tracking-wide text-[#e2e8f0] transition hover:border-[#ff7a00]/40 hover:shadow-[0_0_20px_rgba(255,122,0,0.15)]"
+                className="flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-[#1e2633] px-2 py-2.5 text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-[#e2e8f0] transition hover:border-[#ff7a00]/40 hover:shadow-[0_0_20px_rgba(255,122,0,0.15)] sm:flex-row sm:gap-2 sm:px-5 sm:py-3.5 sm:text-sm"
               >
                 <MapPin className="h-4 w-4 text-[#ff7a00]" />
                 Como chegar
@@ -228,7 +220,7 @@ export default async function Home() {
                 href={INSTAGRAM_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#1e2633] px-5 py-3.5 text-sm font-semibold uppercase tracking-wide text-[#e2e8f0] transition hover:border-[#ff7a00]/40 hover:shadow-[0_0_20px_rgba(255,122,0,0.15)]"
+                className="flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-[#1e2633] px-2 py-2.5 text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-[#e2e8f0] transition hover:border-[#ff7a00]/40 hover:shadow-[0_0_20px_rgba(255,122,0,0.15)] sm:flex-row sm:gap-2 sm:px-5 sm:py-3.5 sm:text-sm"
               >
                 <InstagramIcon className="h-4 w-4" gradientId="instagram-gradient-hero" />
                 Instagram
@@ -236,7 +228,7 @@ export default async function Home() {
 
               <a
                 href={TEL_LINK}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#1e2633] px-5 py-3.5 text-sm font-semibold uppercase tracking-wide text-[#e2e8f0] transition hover:border-[#ff7a00]/40 hover:shadow-[0_0_20px_rgba(255,122,0,0.15)]"
+                className="flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-[#1e2633] px-2 py-2.5 text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-[#e2e8f0] transition hover:border-[#ff7a00]/40 hover:shadow-[0_0_20px_rgba(255,122,0,0.15)] sm:flex-row sm:gap-2 sm:px-5 sm:py-3.5 sm:text-sm"
               >
                 <Phone className="h-4 w-4 text-[#ff7a00]" />
                 Ligar agora
@@ -250,16 +242,16 @@ export default async function Home() {
         id="servicos"
         data-panel
         data-gallery
-        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden py-16 lg:h-screen lg:min-h-0 lg:py-0"
+        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden py-16 desk:h-screen desk:min-h-0 desk:py-0 curto:py-4"
       >
-        <div className="mx-auto w-full max-w-6xl px-5 lg:max-w-none lg:px-12">
+        <div className="mx-auto w-full max-w-6xl px-5 desk:max-w-none desk:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que fazemos</p>
-          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl">Serviços</h2>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl curto:text-2xl">Serviços</h2>
           <p className="mt-2 text-sm text-[#64748b] lg:hidden">Arraste para o lado para ver todos</p>
         </div>
 
-        <div className="trilha-mobile mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
-          <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
+        <div className="trilha-mobile mt-8 curto:mt-4 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div data-track className="flex w-max gap-5 pl-5 will-change-transform desk:pl-12">
             {SERVICOS.map(({ icon: Icon, titulo, desc }) => (
               <a
                 key={titulo}
@@ -281,7 +273,7 @@ export default async function Home() {
               </a>
             ))}
             {/* respiro no fim da trilha */}
-            <div aria-hidden className="w-2 shrink-0 lg:w-12" />
+            <div aria-hidden className="w-2 shrink-0 desk:w-12" />
           </div>
         </div>
       </section>
@@ -290,11 +282,11 @@ export default async function Home() {
         id="avaliacoes"
         data-panel
         data-gallery
-        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden border-t border-white/10 py-16 lg:h-screen lg:min-h-0 lg:py-0"
+        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden border-t border-white/10 py-16 desk:h-screen desk:min-h-0 desk:py-0 curto:py-4"
       >
-        <div className="mx-auto w-full max-w-6xl px-5 lg:max-w-none lg:px-12">
+        <div className="mx-auto w-full max-w-6xl px-5 desk:max-w-none desk:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que dizem</p>
-          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl">
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl curto:text-2xl">
             Avaliações no Google
           </h2>
           <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#94a3b8]">
@@ -315,8 +307,8 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="trilha-mobile mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
-          <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
+        <div className="trilha-mobile mt-8 curto:mt-4 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div data-track className="flex w-max gap-5 pl-5 will-change-transform desk:pl-12">
             {itens.map((a, idx) => (
               <figure
                 key={`${a.nome}-${a.quando}-${idx}`}
@@ -380,12 +372,12 @@ export default async function Home() {
                 </figcaption>
               </figure>
             ))}
-            <div aria-hidden className="w-2 shrink-0 lg:w-12" />
+            <div aria-hidden className="w-2 shrink-0 desk:w-12" />
           </div>
         </div>
       </section>
 
-      <div data-panel className="flex min-h-[100svh] flex-col lg:h-screen lg:min-h-0">
+      <div data-panel className="flex min-h-[100svh] flex-col desk:h-screen desk:min-h-0">
       <section className="relative flex flex-1 items-center overflow-hidden border-y border-white/10">
         <div
           className="absolute inset-0"

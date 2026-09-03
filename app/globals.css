@@ -2,13 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* scroll-behavior: smooth global briga com scroll-snap (trava em alguns
-   itens no Firefox), então fica só no desktop, onde o snap é do GSAP. */
-@media (min-width: 1024px) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
+/* Nada de scroll-behavior: smooth. No celular ele briga com o scroll-snap
+   nativo, e no computador quem conduz a rolagem agora é o paginador do
+   ScrollFX, que anima a posição com o GSAP — as duas suavizações somadas
+   deixam o movimento arrastado e impreciso. */
 
 body {
   background-color: #0f1319;
@@ -73,6 +70,23 @@ body {
   animation: hero-drift 20s ease-in-out infinite alternate;
 }
 
+/* Legenda que aparece sobre a foto do hero no celular: entra junto com a
+   varredura da imagem, deslizando um pouco da esquerda. */
+@keyframes legenda-entra {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.legenda-hero {
+  animation: legenda-entra 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* ---------------------------------------------------------------
    Scroll por painéis
    Mobile: snap nativo do CSS. Roda no compositor, respeita o impulso do
@@ -87,7 +101,10 @@ body {
     scroll-snap-type: y proximity;
   }
 
-  [data-panel] {
+  /* A capa fica de fora do snap. Ela já começa no topo da página, e como o
+     cabeçalho é sticky, encaixar o topo dela na tela empurrava a página para
+     baixo da altura do cabeçalho — o título aparecia cortado ao abrir o site. */
+  [data-panel]:not(#capa) {
     scroll-snap-align: start;
   }
 }
@@ -113,6 +130,10 @@ body {
   .hero-drift {
     animation: none;
     transform: none;
+  }
+
+  .legenda-hero {
+    animation: none;
   }
 
   html {
