@@ -11,8 +11,16 @@ import {
   BadgeCheck,
   Crown,
   ArrowRight,
+  Star,
 } from "lucide-react";
 import HeroCarousel from "./components/HeroCarousel";
+import ScrollFX from "./components/ScrollFX";
+import {
+  AVALIACOES,
+  GOOGLE_NOTA,
+  GOOGLE_PERFIL,
+  GOOGLE_TOTAL,
+} from "./avaliacoes";
 
 const WHATSAPP_NUMBER = "5547933005070";
 const WHATSAPP_MSG = encodeURIComponent("Olá, gostaria de um orçamento");
@@ -123,6 +131,8 @@ function Logo({ className = "h-9 md:h-12 lg:h-14" }: { className?: string }) {
 export default function Home() {
   return (
     <main className="min-h-screen text-[#e2e8f0] antialiased">
+      <ScrollFX />
+
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1319]/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 lg:max-w-none lg:px-12">
           <Logo className="h-9 md:h-12 lg:h-14" />
@@ -150,7 +160,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden lg:min-h-[calc(100vh-81px)]">
+      <section id="capa" data-panel className="relative overflow-hidden lg:min-h-[calc(100vh-81px)]">
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/3 rounded-full opacity-40 blur-3xl"
           style={{ background: "radial-gradient(circle, rgba(255,122,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
@@ -235,34 +245,110 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-6xl px-5 py-16">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que fazemos</p>
-        <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl">Serviços</h2>
+      <section
+        id="servicos"
+        data-panel
+        data-gallery
+        className="relative overflow-hidden py-16 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
+      >
+        <div className="mx-auto w-full max-w-6xl px-5 lg:max-w-none lg:px-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que fazemos</p>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl">Serviços</h2>
+          <p className="mt-2 text-sm text-[#64748b] lg:hidden">Arraste para o lado para ver todos</p>
+        </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICOS.map(({ icon: Icon, titulo, desc }) => (
-            <a
-              key={titulo}
-              href={whatsappFor(titulo)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col rounded-2xl border border-white/10 bg-[#1e2633] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#ff7a00]/50 hover:shadow-[0_10px_40px_rgba(255,122,0,0.15)]"
-            >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff7a00]/10 ring-1 ring-[#ff7a00]/20 transition group-hover:bg-[#ff7a00]/15 group-hover:ring-[#ff7a00]/40">
-                <Icon className="h-6 w-6 text-[#ff7a00]" />
-              </div>
-              <h3 className="font-display text-lg font-bold tracking-tight text-[#f1f5f9]">{titulo}</h3>
-              <p className="mt-1.5 flex-1 text-sm leading-relaxed text-[#94a3b8]">{desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff7a00] transition group-hover:gap-2">
-                Pedir orçamento deste serviço
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </span>
-            </a>
-          ))}
+        <div className="mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
+            {SERVICOS.map(({ icon: Icon, titulo, desc }) => (
+              <a
+                key={titulo}
+                href={whatsappFor(titulo)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex w-[290px] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#1e2633] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#ff7a00]/50 hover:shadow-[0_10px_40px_rgba(255,122,0,0.15)] sm:w-[340px]"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff7a00]/10 ring-1 ring-[#ff7a00]/20 transition group-hover:bg-[#ff7a00]/15 group-hover:ring-[#ff7a00]/40">
+                  <Icon className="h-6 w-6 text-[#ff7a00]" />
+                </div>
+                <h3 className="font-display text-lg font-bold tracking-tight text-[#f1f5f9]">{titulo}</h3>
+                <p className="mt-1.5 flex-1 text-sm leading-relaxed text-[#94a3b8]">{desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#ff7a00] transition group-hover:gap-2">
+                  Pedir orçamento deste serviço
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                </span>
+              </a>
+            ))}
+            {/* respiro no fim da trilha */}
+            <div aria-hidden className="w-2 shrink-0 lg:w-12" />
+          </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-y border-white/10">
+      <section
+        id="avaliacoes"
+        data-panel
+        data-gallery
+        className="relative overflow-hidden border-t border-white/10 py-16 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
+      >
+        <div className="mx-auto w-full max-w-6xl px-5 lg:max-w-none lg:px-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que dizem</p>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl">
+            Avaliações no Google
+          </h2>
+          <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#94a3b8]">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ff7a00]/25 bg-[#ff7a00]/10 px-3 py-1.5 font-semibold text-[#ffb37a]">
+              <Star className="h-4 w-4 fill-[#ff7a00] text-[#ff7a00]" />
+              {GOOGLE_NOTA} de 5
+            </span>
+            <span>{GOOGLE_TOTAL} avaliações no total</span>
+            <a
+              href={GOOGLE_PERFIL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-semibold text-[#ff7a00] transition hover:gap-1.5"
+            >
+              Ver todas no Google
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
+            {AVALIACOES.map((a) => (
+              <figure
+                key={a.nome + a.quando}
+                className="flex w-[290px] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#1e2633] p-6 sm:w-[360px]"
+              >
+                <div className="flex gap-0.5" aria-label={`${a.nota} de 5 estrelas`}>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star
+                      key={i}
+                      aria-hidden
+                      className={
+                        i < a.nota
+                          ? "h-4 w-4 fill-[#ff7a00] text-[#ff7a00]"
+                          : "h-4 w-4 text-white/20"
+                      }
+                    />
+                  ))}
+                </div>
+                <blockquote className="mt-4 flex-1 text-base leading-relaxed text-[#e2e8f0]">
+                  {a.texto}
+                </blockquote>
+                <figcaption className="mt-5 border-t border-white/5 pt-4">
+                  <p className="text-sm font-semibold text-[#f1f5f9]">{a.nome}</p>
+                  <p className="text-xs text-[#64748b]">{a.quando} · no Google</p>
+                </figcaption>
+              </figure>
+            ))}
+            <div aria-hidden className="w-2 shrink-0 lg:w-12" />
+          </div>
+        </div>
+      </section>
+
+      <div data-panel className="lg:flex lg:h-screen lg:flex-col">
+      <section className="relative overflow-hidden border-y border-white/10 lg:flex lg:flex-1 lg:items-center">
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(135deg, #161c24 0%, #1e2633 45%, #201812 100%)" }}
@@ -272,7 +358,7 @@ export default function Home() {
           style={{ background: "radial-gradient(circle, rgba(255,85,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
         />
 
-        <div className="relative mx-auto max-w-6xl px-5 py-16 text-center">
+        <div className="relative mx-auto w-full max-w-6xl px-5 py-16 text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
             <span className="bg-gradient-to-r from-[#ffb37a] via-[#ff7a00] to-[#ff5500] bg-clip-text text-transparent">
               Vamos cuidar do seu veículo ainda hoje?
@@ -293,7 +379,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="relative overflow-hidden bg-[#0b0e13]">
+      <footer className="relative overflow-hidden bg-[#0b0e13] lg:shrink-0">
         <Image
           src="/logo.png"
           alt=""
@@ -341,6 +427,7 @@ export default function Home() {
           </p>
         </div>
       </footer>
+      </div>
     </main>
   );
 }
