@@ -97,9 +97,18 @@ async function resolverPlaceId(): Promise<string | null> {
     }
   );
 
-  if (!resposta.ok) return null;
+  if (!resposta.ok) {
+    console.warn(
+      `[avaliacoes] Text Search falhou: HTTP ${resposta.status} — ${await resposta
+        .text()
+        .catch(() => "sem corpo")}`
+    );
+    return null;
+  }
   const dados = (await resposta.json()) as { places?: { id?: string }[] };
-  return dados.places?.[0]?.id ?? null;
+  const encontrado = dados.places?.[0]?.id ?? null;
+  if (!encontrado) console.warn("[avaliacoes] Text Search nao encontrou o perfil.");
+  return encontrado;
 }
 
 function paraAvaliacao(review: GoogleReview): Avaliacao | null {
@@ -126,7 +135,10 @@ function chave(a: Avaliacao) {
 }
 
 export async function getAvaliacoes(): Promise<Avaliacoes> {
-  if (!API_KEY) return RESERVA;
+  if (!API_KEY) {
+    console.warn("[avaliacoes] Sem GOOGLE_MAPS_API_KEY — usando a lista de reserva.");
+    return RESERVA;
+  }
 
   try {
     const placeId = await resolverPlaceId();
@@ -144,7 +156,14 @@ export async function getAvaliacoes(): Promise<Avaliacoes> {
       }
     );
 
-    if (!resposta.ok) return RESERVA;
+    if (!resposta.ok) {
+      console.warn(
+        `[avaliacoes] Place Details falhou: HTTP ${resposta.status} — ${await resposta
+          .text()
+          .catch(() => "sem corpo")}`
+      );
+      return RESERVA;
+    }
 
     const lugar = (await resposta.json()) as GooglePlace;
 
@@ -174,7 +193,8 @@ export async function getAvaliacoes(): Promise<Avaliacoes> {
       itens: completadas.slice(0, QUANTIDADE),
       aoVivo: aoVivo.length > 0,
     };
-  } catch {
+  } catch (erro) {
+    console.warn("[avaliacoes] Erro inesperado ao consultar o Google:", erro);
     return RESERVA;
   }
 }
