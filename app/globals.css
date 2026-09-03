@@ -88,6 +88,49 @@ body {
 }
 
 /* ---------------------------------------------------------------
+   Fita de miniaturas do hero (tela em pé)
+   Rolagem lateral sem fim: o componente repete as fotos em blocos e
+   recentraliza a fita sem animação sempre que o visitante se afasta do bloco
+   do meio, então nunca há uma ponta para bater. O snap por centro é o que
+   garante a regra "a miniatura do meio é a foto grande": quando a rolagem
+   assenta, sempre existe uma miniatura exatamente no centro.
+   A máscara dissolve as pontas no fundo escuro do site, em vez de cortá-las
+   numa borda reta.
+--------------------------------------------------------------- */
+.trilha-miniaturas {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    #000 32%,
+    #000 68%,
+    rgba(0, 0, 0, 0.25) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    #000 32%,
+    #000 68%,
+    rgba(0, 0, 0, 0.25) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.trilha-miniaturas::-webkit-scrollbar {
+  display: none;
+}
+
+.trilha-miniaturas [data-mini] {
+  scroll-snap-align: center;
+}
+
+/* ---------------------------------------------------------------
    Scroll por painéis
    Mobile: snap nativo do CSS. Roda no compositor, respeita o impulso do
    dedo e não briga com a barra de endereço — diferente de qualquer snap

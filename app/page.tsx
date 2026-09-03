@@ -160,7 +160,7 @@ export default async function Home() {
         />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-6 pt-6 sm:pt-16 desk:static desk:max-w-none desk:min-h-[calc(100svh-101px)] desk:px-12 desk:py-8 curto:desk:min-h-[calc(100svh-55px)] curto:desk:py-3">
-          <div className="relative z-10 desk:static desk:max-w-[46rem]">
+          <div className="relative z-10 min-w-0 desk:static desk:max-w-[46rem]">
             <div className="mb-6 hidden flex-wrap gap-2 desk:flex curto:mb-3">
               {BADGES.map(({ icon: Icon, label }) => (
                 <span
