@@ -102,13 +102,13 @@ const SERVICOS = [
   { icon: Crown, titulo: "Linha Premium Sob Encomenda", desc: "Atendimento exclusivo para veículos importados e de alta performance, com encomenda de pneus e rodas de especificações especiais." },
 ];
 
-function Logo({ className = "h-9 md:h-12 desk:h-14" }: { className?: string }) {
+function Logo({ className = "h-11 md:h-14 desk:h-16" }: { className?: string }) {
   return (
     <Image
       src="/logo.png"
       alt="MM Pneus"
-      width={220}
-      height={122}
+      width={1400}
+      height={469}
       className={`w-auto object-contain ${className}`}
       priority
     />
@@ -128,7 +128,7 @@ export default async function Home() {
 
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1319]/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 curto:py-1.5 desk:max-w-none desk:px-12">
-          <Logo className="h-9 curto:h-8 md:h-12 desk:h-14" />
+          <Logo className="h-11 curto:h-9 md:h-14 desk:h-16" />
 
           <div className="flex items-center gap-2">
             <a
@@ -153,13 +153,13 @@ export default async function Home() {
         </div>
       </header>
 
-      <section id="capa" data-panel className="relative overflow-hidden desk:min-h-[calc(100svh-81px)] curto:desk:min-h-[calc(100svh-46px)]">
+      <section id="capa" data-panel className="relative overflow-hidden desk:min-h-[calc(100svh-89px)] curto:desk:min-h-[calc(100svh-49px)]">
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/3 rounded-full opacity-40 blur-3xl"
           style={{ background: "radial-gradient(circle, rgba(255,122,0,0.35) 0%, rgba(255,85,0,0) 70%)" }}
         />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-6 pt-6 sm:pt-16 desk:static desk:max-w-none desk:min-h-[calc(100svh-81px)] desk:px-12 desk:py-8 curto:desk:min-h-[calc(100svh-46px)] curto:desk:py-3">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-6 pt-6 sm:pt-16 desk:static desk:max-w-none desk:min-h-[calc(100svh-89px)] desk:px-12 desk:py-8 curto:desk:min-h-[calc(100svh-49px)] curto:desk:py-3">
           <div className="relative z-10 desk:static desk:max-w-[46rem]">
             <div className="mb-6 hidden flex-wrap gap-2 desk:flex curto:mb-3">
               {BADGES.map(({ icon: Icon, label }) => (
@@ -413,8 +413,8 @@ export default async function Home() {
         <Image
           src="/logo.png"
           alt=""
-          width={220}
-          height={122}
+          width={1400}
+          height={469}
           aria-hidden="true"
           className="pointer-events-none absolute -right-10 top-1/2 z-0 w-[500px] max-w-none -translate-y-1/2 select-none object-contain opacity-10 mix-blend-screen md:w-[680px]"
         />
