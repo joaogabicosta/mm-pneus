@@ -16,11 +16,11 @@ import { getAvaliacoes } from "./lib/googleReviews";
 import { BADGES } from "./badges";
 
 const WHATSAPP_NUMBER = "5547933005070";
-const WHATSAPP_MSG = encodeURIComponent("Olá, gostaria de um orçamento");
+const WHATSAPP_MSG = encodeURIComponent("Olá, gostaria de um orçamento (vim pelo site)");
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
 const whatsappFor = (servico: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Olá! Gostaria de um orçamento para: ${servico}`
+    `Olá! Gostaria de um orçamento para: ${servico} (vim pelo site)`
   )}`;
 const MAPS_LINK =
   "https://maps.google.com/?q=MM+Pneus+Rua+Lauro+Muller+2060+Vila+Moema+Tubarao+SC";
