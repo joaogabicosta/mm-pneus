@@ -92,9 +92,13 @@ export default function ScrollFX() {
                 pontos[0] ?? valor
               );
             },
-            duration: { min: 0.2, max: 0.5 },
-            delay: 0.1,
+            // valores de "paginação": curto e com pouca espera. Delay alto
+            // dá sensação de bug; duração acima de 1s dá sensação de travado.
+            duration: { min: 0.25, max: 0.6 },
+            delay: 0.05,
             ease: "power2.inOut",
+            directional: true,
+            inertia: true,
           },
         });
 
