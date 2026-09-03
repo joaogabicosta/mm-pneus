@@ -111,18 +111,32 @@ body {
 
 /* Trilhas horizontais no celular: scroller próprio, com snap por card.
    overscroll-behavior-x: contain impede o gesto horizontal de vazar para
-   o scroll vertical da página. */
+   o scroll vertical da página.
+   A trilha leva py-6 no celular (e não só pb-4): a área que responde ao
+   arrasto horizontal é a caixa do scroller, então esse respiro em cima e
+   embaixo dos cards vira faixa útil — o dedo não precisa cair exatamente
+   sobre um card para a trilha andar. */
 .trilha-mobile {
   overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 1023px) {
+  /* "proximity" no lugar de "mandatory". Com o encaixe obrigatório qualquer
+     arrasto curto era desfeito: o dedo saía do lugar e a trilha voltava
+     sozinha para o card mais próximo — e no vão entre dois cards, onde as
+     distâncias até um e outro empatam, ela praticamente não saía do lugar,
+     que era a sensação de "o toque não reconhece o deslize aqui". Com
+     proximity o arrasto vale desde o primeiro pixel e o encaixe só acontece
+     quando o gesto já parou perto de um card. */
   .trilha-mobile {
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
+    /* alinha o encaixe com o pl-5 da trilha, senão o card encosta na borda */
+    scroll-padding-left: 1.25rem;
   }
 
   .trilha-mobile [data-card] {
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
 }
 

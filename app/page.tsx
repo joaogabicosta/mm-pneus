@@ -250,8 +250,8 @@ export default async function Home() {
           <p className="mt-2 text-sm text-[#64748b] lg:hidden">Arraste para o lado para ver todos</p>
         </div>
 
-        <div className="trilha-mobile mt-8 curto:mt-4 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
-          <div data-track className="flex w-max gap-5 pl-5 will-change-transform desk:pl-12">
+        <div className="trilha-mobile mt-6 curto:mt-4 overflow-x-auto py-6 [scrollbar-width:none] lg:mt-8 lg:overflow-x-hidden lg:py-0 [&::-webkit-scrollbar]:hidden">
+          <div data-track className="flex w-max gap-5 pl-5 desk:pl-12 lg:will-change-transform">
             {SERVICOS.map(({ icon: Icon, titulo, desc }) => (
               <a
                 key={titulo}
@@ -282,7 +282,7 @@ export default async function Home() {
         id="avaliacoes"
         data-panel
         data-gallery
-        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden border-t border-white/10 py-16 desk:h-screen desk:min-h-0 desk:py-0 curto:py-4"
+        className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden py-16 desk:h-screen desk:min-h-0 desk:border-t desk:border-white/10 desk:py-0 curto:py-4"
       >
         <div className="mx-auto w-full max-w-6xl px-5 desk:max-w-none desk:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#ff7a00]">O que dizem</p>
@@ -307,8 +307,8 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="trilha-mobile mt-8 curto:mt-4 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
-          <div data-track className="flex w-max gap-5 pl-5 will-change-transform desk:pl-12">
+        <div className="trilha-mobile mt-6 curto:mt-4 overflow-x-auto py-6 [scrollbar-width:none] lg:mt-8 lg:overflow-x-hidden lg:py-0 [&::-webkit-scrollbar]:hidden">
+          <div data-track className="flex w-max gap-5 pl-5 desk:pl-12 lg:will-change-transform">
             {itens.map((a, idx) => (
               <figure
                 key={`${a.nome}-${a.quando}-${idx}`}
@@ -378,7 +378,7 @@ export default async function Home() {
       </section>
 
       <div data-panel className="flex min-h-[100svh] flex-col desk:h-screen desk:min-h-0">
-      <section className="relative flex flex-1 items-center overflow-hidden border-y border-white/10">
+      <section className="relative flex flex-1 items-center overflow-hidden desk:border-y desk:border-white/10">
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(135deg, #161c24 0%, #1e2633 45%, #201812 100%)" }}
