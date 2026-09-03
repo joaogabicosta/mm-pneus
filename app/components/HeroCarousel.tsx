@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { BADGES } from "../badges";
 
 const SLIDES = [
   { src: "/hero/slide1.png", alt: "Rodas e pneus montados em carro esportivo" },
@@ -105,7 +106,7 @@ export default function HeroCarousel() {
     // Mobile: faixa full-bleed (sangra o px-5 do container), altura por aspect-ratio.
     // Desktop (lg+): sai do fluxo e vira o fundo full-bleed da <section> do hero.
     <div
-      className="relative -mx-5 my-8 aspect-[16/10] touch-pan-y select-none overflow-hidden border-y border-[#ff7a00]/20 lg:absolute lg:inset-0 lg:-z-10 lg:mx-0 lg:my-0 lg:aspect-auto lg:h-full lg:w-full lg:border-0"
+      className="relative -mx-5 my-5 aspect-[16/9] desk:my-0 touch-pan-y select-none overflow-hidden border-y border-[#ff7a00]/20 desk:absolute desk:inset-0 desk:-z-10 desk:mx-0 desk:my-0 desk:aspect-auto desk:h-full desk:w-full desk:border-0"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -120,7 +121,7 @@ export default function HeroCarousel() {
           alt=""
           aria-hidden
           draggable={false}
-          className="absolute inset-0 h-full w-full object-cover object-center lg:object-[68%_center]"
+          className="absolute inset-0 h-full w-full object-cover object-center desk:object-[68%_center]"
         />
 
         {/* Camada preta que vai à frente, escurecendo a foto que sai */}
@@ -134,27 +135,51 @@ export default function HeroCarousel() {
           src={SLIDES[active].src}
           alt={SLIDES[active].alt}
           draggable={false}
-          className="hero-sweep absolute inset-0 h-full w-full object-cover object-center lg:object-[68%_center]"
+          className="hero-sweep absolute inset-0 h-full w-full object-cover object-center desk:object-[68%_center]"
         />
       </div>
 
-      {/* --- Overlays MOBILE --- */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f1319]/70 via-transparent to-[#0f1319]/20 lg:hidden" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0f1319]/30 via-transparent to-[#0f1319]/30 lg:hidden" />
+      {/* --- Overlays MOBILE ---
+          Mesma ideia do computador: a foto escurece do lado esquerdo para a
+          legenda ficar legível por cima dela, e clareia à direita para a
+          imagem ainda aparecer. */}
+      <div
+        className="pointer-events-none absolute inset-0 desk:hidden"
+        style={{
+          background:
+            "linear-gradient(90deg, #0f1319 0%, rgba(15,19,25,0.92) 26%, rgba(15,19,25,0.66) 48%, rgba(15,19,25,0.24) 74%, rgba(15,19,25,0) 100%)",
+        }}
+      />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0f1319]/80 to-transparent desk:hidden" />
+
+      {/* Legenda do slide: uma promessa por foto, só no celular. No computador
+          as três aparecem juntas como selos acima do título. */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex w-[64%] items-center pl-5 desk:hidden">
+        <span
+          key={active}
+          className="legenda-hero inline-flex items-center gap-2 text-[13px] font-semibold uppercase leading-tight tracking-wide text-[#ffb37a]"
+        >
+          {(() => {
+            const Icone = BADGES[active % BADGES.length].icon;
+            return <Icone className="h-4 w-4 shrink-0 text-[#ff7a00]" />;
+          })()}
+          {BADGES[active % BADGES.length].label}
+        </span>
+      </div>
 
       {/* --- Overlays DESKTOP --- */}
       <div
-        className="pointer-events-none absolute inset-0 hidden lg:block"
+        className="pointer-events-none absolute inset-0 hidden desk:block"
         style={{
           background:
             "linear-gradient(90deg, #0f1319 0%, #0f1319 44%, rgba(15,19,25,0.90) 57%, rgba(15,19,25,0.55) 71%, rgba(15,19,25,0.18) 86%, rgba(15,19,25,0) 100%)",
         }}
       />
-      <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-24 bg-gradient-to-b from-[#0f1319]/85 to-transparent lg:block" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-[#0f1319] via-[#0f1319]/55 to-transparent lg:block" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-24 bg-gradient-to-b from-[#0f1319]/85 to-transparent desk:block" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-[#0f1319] via-[#0f1319]/55 to-transparent desk:block" />
 
       {/* Indicadores de paginação */}
-      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 lg:bottom-10 lg:left-auto lg:right-10 lg:translate-x-0">
+      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 desk:bottom-10 desk:left-auto desk:right-10 desk:translate-x-0">
         {SLIDES.map((slide, i) => (
           <button
             key={slide.src}
