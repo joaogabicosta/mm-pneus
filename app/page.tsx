@@ -15,12 +15,7 @@ import {
 } from "lucide-react";
 import HeroCarousel from "./components/HeroCarousel";
 import ScrollFX from "./components/ScrollFX";
-import {
-  AVALIACOES,
-  GOOGLE_NOTA,
-  GOOGLE_PERFIL,
-  GOOGLE_TOTAL,
-} from "./avaliacoes";
+import { getAvaliacoes } from "./lib/googleReviews";
 
 const WHATSAPP_NUMBER = "5547933005070";
 const WHATSAPP_MSG = encodeURIComponent("Olá, gostaria de um orçamento");
@@ -128,7 +123,13 @@ function Logo({ className = "h-9 md:h-12 lg:h-14" }: { className?: string }) {
   );
 }
 
-export default function Home() {
+// Revalida a página a cada 6 horas: as avaliações do Google entram
+// sozinhas, sem precisar de novo deploy.
+export const revalidate = 21600;
+
+export default async function Home() {
+  const { nota, total, perfil, itens } = await getAvaliacoes();
+
   return (
     <main className="min-h-screen text-[#e2e8f0] antialiased">
       <ScrollFX />
@@ -299,11 +300,11 @@ export default function Home() {
           <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#94a3b8]">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ff7a00]/25 bg-[#ff7a00]/10 px-3 py-1.5 font-semibold text-[#ffb37a]">
               <Star className="h-4 w-4 fill-[#ff7a00] text-[#ff7a00]" />
-              {GOOGLE_NOTA} de 5
+              {nota} de 5
             </span>
-            <span>{GOOGLE_TOTAL} avaliações no total</span>
+            <span>{total} avaliações no total</span>
             <a
-              href={GOOGLE_PERFIL}
+              href={perfil}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 font-semibold text-[#ff7a00] transition hover:gap-1.5"
@@ -316,9 +317,9 @@ export default function Home() {
 
         <div className="trilha-mobile mt-8 overflow-x-auto pb-4 [scrollbar-width:none] lg:overflow-x-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
           <div data-track className="flex w-max gap-5 pl-5 will-change-transform lg:pl-12">
-            {AVALIACOES.map((a) => (
+            {itens.map((a, idx) => (
               <figure
-                key={a.nome + a.quando}
+                key={`${a.nome}-${a.quando}-${idx}`}
                 data-card
                 className="flex w-[290px] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#1e2633] p-6 sm:w-[360px]"
               >
@@ -338,9 +339,44 @@ export default function Home() {
                 <blockquote className="mt-4 flex-1 text-base leading-relaxed text-[#e2e8f0]">
                   {a.texto}
                 </blockquote>
-                <figcaption className="mt-5 border-t border-white/5 pt-4">
-                  <p className="text-sm font-semibold text-[#f1f5f9]">{a.nome}</p>
-                  <p className="text-xs text-[#64748b]">{a.quando} · no Google</p>
+                <figcaption className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">
+                  {a.foto ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={a.foto}
+                      alt=""
+                      aria-hidden
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="h-9 w-9 shrink-0 rounded-full border border-white/10 object-cover"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#0f1319] text-sm font-semibold text-[#ff7a00]"
+                    >
+                      {a.nome.trim().charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-semibold text-[#f1f5f9]">
+                      {a.nome}
+                    </span>
+                    {a.link ? (
+                      <a
+                        href={a.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-xs text-[#64748b] transition hover:text-[#ff7a00]"
+                      >
+                        {a.quando} · no Google
+                      </a>
+                    ) : (
+                      <span className="block text-xs text-[#64748b]">
+                        {a.quando} · no Google
+                      </span>
+                    )}
+                  </span>
                 </figcaption>
               </figure>
             ))}

@@ -1,19 +1,31 @@
-// Avaliações REAIS publicadas no perfil da MM Pneus no Google Maps.
-// Coletadas em 02/09/2026, da mais recente para a mais antiga,
-// mantendo apenas notas 4 e 5 que tem comentário escrito.
+// Lista de RESERVA das avaliações da MM Pneus no Google.
 //
-// Observação: entre as 4-5 estrelas mais recentes há várias sem texto
-// (só a nota). Como o carrossel mostra comentários, a lista desce um pouco
-// mais no histórico até completar 10 com texto.
+// O site busca as avaliações ao vivo pela Google Places API
+// (app/lib/googleReviews.ts). Esta lista entra em dois casos:
+//   1. a API não está configurada ou não respondeu — o site usa só ela;
+//   2. a API respondeu, mas devolveu menos de 10 avaliações (o Google
+//      limita a 5 por perfil) — ela completa os cartões que faltam.
 //
-// Para atualizar: abrir o perfil no Google, ordenar por "Mais recentes" e
-// substituir a lista abaixo. Nada aqui deve ser inventado ou reescrito.
+// São avaliações REAIS publicadas no perfil da MM Pneus no Google Maps,
+// coletadas em 02/09/2026, da mais recente para a mais antiga, mantendo
+// apenas notas 4 e 5 com comentário escrito. Nada aqui deve ser inventado
+// ou reescrito.
+//
+// Para atualizar à mão: abrir o perfil no Google, ordenar por "Mais
+// recentes" e substituir a lista abaixo.
 
 export type Avaliacao = {
   nome: string;
   nota: number;
+  /** Data relativa ("9 meses atrás"), como o Google mostra. */
   quando: string;
   texto: string;
+  /** Foto do autor — só vem quando a avaliação chega ao vivo pela API. */
+  foto?: string;
+  /** Link direto para a avaliação no Google — idem. */
+  link?: string;
+  /** Timestamp ISO da publicação, usado para ordenar da mais recente. */
+  publicadoEm?: string;
 };
 
 export const GOOGLE_NOTA = "4,5";
